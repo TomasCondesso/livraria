@@ -1,5 +1,7 @@
 package com.estagiariontt.Livraria.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,10 +18,10 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long AuthorId;
+    public Long authorId;
 
 
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "authors")
     private Set<Book> bookSet_Aut;
 

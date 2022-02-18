@@ -2,6 +2,7 @@ package com.estagiariontt.Livraria.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,6 +42,7 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Collection<Category> categories;
+
 
     @ManyToMany
     @JoinTable(

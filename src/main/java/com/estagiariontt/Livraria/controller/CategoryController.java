@@ -11,32 +11,32 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/books/categories")
 @Slf4j
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @PostMapping("/category/")
+    @PostMapping("/")
     public Category saveCategory(@RequestBody Category category){
         log.info("Inside saveCategory method of CategoryController.");
         return categoryService.saveCategory(category);
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/{id}")
     public Category findCategoryById(@PathVariable("id") Long CategoryId){
         log.info("Inside findBookById method of BookController");
         return categoryService.findCategoryById(CategoryId);
     }
 
-    @GetMapping("/category")
+    @GetMapping("/")
     public List<Category> allCategories(){
         log.info("Inside allCategories method of CategoryController.");
         return categoryService.categoryList();
     }
 
-    @DeleteMapping("/category_delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable("id") Long CategoryId){
         log.info("Inside allCategories method of CategoryController.");
         categoryService.categoryDelete(CategoryId);

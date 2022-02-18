@@ -21,7 +21,7 @@ public class CategoryService {
     }
 
     public Category findCategoryById(Long CategoryId) {
-        log.info("Inside saveCategory method of findCategoryById.");
+        log.info("Inside saveCategory method of CategoryService.");
         //return bookRepository.findByBookId(BookId);
         return categoryRepository.getById(CategoryId);
     }

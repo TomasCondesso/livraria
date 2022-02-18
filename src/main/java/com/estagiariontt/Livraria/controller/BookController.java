@@ -1,18 +1,18 @@
 package com.estagiariontt.Livraria.controller;
 
 import com.estagiariontt.Livraria.entity.Book;
-import com.estagiariontt.Livraria.entity.Category;
 import com.estagiariontt.Livraria.repository.BookRepository;
+import com.fasterxml.jackson.databind.DatabindException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.estagiariontt.Livraria.service.BookService;
 
-import javax.security.auth.Subject;
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/books")
 @Slf4j
 public class BookController {
 
@@ -33,14 +33,27 @@ public class BookController {
     }
 
     @GetMapping("/")
-    public List<Book> allBooks(@RequestParam String title){
-        log.info("Inside allBooks method of BookController." + title);
-        return bookService.bookList();
+    public List<Book> allBooks(@RequestParam(required = false) String title, @RequestParam(required = false) Long score){
+        log.info("Inside allCategories method of CategoryController.");
+        return bookService.bookLists(title, score);
     }
+/*
+    @GetMapping("/")
+    public Book booksByTitle(@RequestParam String title){
+        log.info("Inside allBooks method of BookController." + title);
+        return bookService.bookByTitle(title);
+    }
+
+    @GetMapping("/")
+    public Book booksByScore(@RequestParam Long score){
+        log.info("Inside allBooks method of BookController." + score);
+        return bookService.bookByScore(score);
+    }
+*/
 
     //TODO Triagem por titulo. Após isso fazer com os outros parametros.
 
-    @DeleteMapping("/book_delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable("id") Long BookId){
         log.info("Inside allCategories method of CategoryController.");
         bookService.bookDelete(BookId);
